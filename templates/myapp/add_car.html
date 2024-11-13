@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
+    {% csrf_token %}
+    
+    <!-- Form Title -->
+    <h2 class="text-2xl font-bold text-indigo-600 mb-4">Add a New Car</h2>
+    
+    <!-- Car Details Section -->
+    <div class="mb-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Car Details</h3>
+        {{ car_form|crispy }}
+    </div>
+    
+    <!-- Image Upload Section -->
+    <div class="mb-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Upload Up to 10 Images</h3>
+        <p class="text-sm text-gray-500 mb-4">You can upload multiple images for your car.</p>
+        {{ formset.management_form }}
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for form in formset %}
+                <div class="bg-gray-100 p-4 rounded-lg shadow-sm border border-gray-200">
+                    {{ form|crispy }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Submit Button -->
+    <button type="submit" class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">Add Car</button>
+</form>
+{% endblock %}

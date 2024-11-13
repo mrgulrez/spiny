@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-indigo-600 mb-4">Your Cars</h1>
+    <form method="get" class="mb-6">
+        <input type="text" name="search" placeholder="Search your cars..." value="{{ request.GET.search }}" class="p-2 border rounded-lg w-1/2">
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Search</button>
+    </form>
+    
+    {% if cars %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for car in cars %}
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    {% if car.car_images.first %}
+                        <div class="relative group mb-4">
+                            <img src="{{ car.car_images.first.image.url }}" alt="{{ car.title }}"
+                                 class="w-full h-64 object-cover rounded-lg shadow-md group-hover:opacity-75 transition duration-300 ease-in-out">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition duration-300 ease-in-out">
+                                <span class="text-white text-lg font-semibold">View Details</span>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-500 rounded-lg">
+                            No Image Available
+                        </div>
+                    {% endif %}
+                    <div class="text-lg font-semibold text-gray-800">
+                        <a href="{% url 'myapp:car_detail' car.pk %}" class="text-indigo-600 hover:text-indigo-800">{{ car.title }}</a>
+                    </div>
+                    <p class="text-gray-600">{{ car.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-gray-600">No cars found.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %} About Us {% endblock title %}
+
+{% block header %}
+<div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <header class="mb-4 flex items-center justify-between py-4 md:py-8">
+        <!-- logo - start -->
+        <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
+          {% include "logo.html" %}
+        </a>
+        <!-- logo - end -->
+
+        <!-- nav - start -->
+        <nav class="hidden gap-12 lg:flex">
+          <a href="/" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+          <a href="{% url 'myapp:features' %}" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Features</a>
+          <a href="{% url 'myapp:about' %}" class="text-lg font-semibold text-indigo-500">About</a>
+        </nav>
+        <!-- nav - end -->
+
+        <!-- buttons - start -->
+        {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="hidden rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block">Log Out</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="hidden rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base lg:inline-block">Sign in</a>
+        {% endif %}
+        
+        {% include "buttonsidebar.html" %}
+        <!-- buttons - end -->
+      </header>
+    </div>
+  </div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-8 lg:px-16">
+    <!-- About Us - start -->
+    <div class="mb-12 text-center">
+      <h2 class="text-4xl font-extrabold text-gray-800 leading-tight mb-6 lg:text-5xl">About Spyne</h2>
+      <p class="text-gray-600 mx-auto max-w-screen-md lg:text-lg">
+        Spyne empowers businesses to create high-quality product visuals at scale with AI. We specialize in helping used-car dealerships and marketplaces enhance their visual display pages (VDPs) with engaging 360° views and images that boost sales.
+      </p>
+    </div>
+    <!-- About Us - end -->
+
+    <!-- Services - start -->
+    <div class="lg:col-span-2 hover:bg-gray-200 transition duration-300 rounded-lg p-6">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Services We Offer</h3>
+      <div class="grid gap-4 md:grid-cols-2">
+        <!-- AI-Powered Visual Creation -->
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">AI-Powered Visual Creation</h4>
+          <p class="text-gray-700">
+            Transform your product visuals effortlessly. Spyne's AI technology generates high-quality images and 360° views that engage potential customers and enhance your online presence.
+          </p>
+        </div>
+        <!-- Customizable Product Catalogs -->
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">Customizable Product Catalogs</h4>
+          <p class="text-gray-700">
+            Build and manage product catalogs with ease, ensuring your listings are always visually captivating, informative, and ready to convert browsers into buyers.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Services - end -->
+
+    <!-- Mission & Vision - start -->
+    <div class="lg:col-span-1 hover:bg-gray-200 transition duration-300 rounded-lg p-6">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Our Vision</h3>
+      <p class="text-gray-700">
+        Spyne’s vision is to revolutionize catalog creation, enabling businesses to sell confidently online using nothing more than smartphones and AI. We aim to make high-quality visuals accessible to all.
+      </p>
+    </div>
+    <div class="lg:col-span-1 hover:bg-gray-200 transition duration-300 rounded-lg p-6">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Our Mission</h3>
+      <p class="text-gray-700">
+        Our mission is to empower businesses with AI-driven tools for creating visually stunning, scalable catalogs that enhance product appeal, customer engagement, and sales effectiveness.
+      </p>
+    </div>
+    <!-- Mission & Vision - end -->
+
+    <!-- Core Values - start -->
+    <div class="lg:col-span-2 hover:bg-gray-200 transition duration-300 rounded-lg p-6">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Our Core Values</h3>
+      <div class="grid gap-4 md:grid-cols-3">
+        <!-- Creativity -->
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">Creativity</h4>
+          <p class="text-gray-700">
+            Embrace out-of-the-box thinking to disrupt conventional visual creation processes and offer innovative solutions.
+          </p>
+        </div>
+        <!-- Innovation -->
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">Innovation</h4>
+          <p class="text-gray-700">
+            Continuously build and add meaningful value to our customers’ businesses by leveraging cutting-edge AI technology.
+          </p>
+        </div>
+        <!-- Customer Centricity -->
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">Customer Centricity</h4>
+          <p class="text-gray-700">
+            We prioritize our customers’ needs with an obsessive focus on delivering delight through our solutions and services.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Core Values - end -->
+
+    <!-- Team - start -->
+    <div class="lg:col-span-1 hover:bg-gray-200 transition duration-300 rounded-lg p-6">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Our Team</h3>
+      <p class="text-gray-700">
+        Behind Spyne is a team of visionaries, AI experts, and industry veterans committed to transforming product visualization with cutting-edge AI.
+      </p>
+    </div>
+    <!-- Team - end -->
+  </div>
+</div>
+
+{% endblock content %}

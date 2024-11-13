@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Revolutionary way to build your project - introducing our team, projects, and achievements.">
+  <title>Revolutionary Project Builder | Our Team, Projects, and Achievements</title>
+  {% block title %}Home{% endblock %}
+  <!-- Other meta tags (keywords, author, etc.) can be added here -->
+</head>
+
+{% block content %}
+<!-- hero - start -->
+<!-- hero - start -->
+<div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <section class="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
+      <!-- image - start -->
+      <img src="https://images.unsplash.com/photo-1618004652321-13a63e576b80?auto=format&q=75&fit=crop&w=1500" loading="lazy" alt="Photo by Gulrez Design" class="absolute inset-0 h-full w-full object-cover object-center" />
+      <!-- image - end -->
+
+      <!-- overlay - start -->
+      <div class="absolute inset-0 bg-indigo-500 mix-blend-multiply"></div>
+      <!-- overlay - end -->
+
+      <!-- text start -->
+      <div class="relative flex flex-col items-center p-4 sm:max-w-xl">
+        <p class="mb-4 text-center text-lg text-indigo-200 sm:text-xl md:mb-8">The Future of Automotive Retail</p>
+        <h1 class="mb-8 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl"> AI-Powered Car Photography Solutions for Dealerships & Marketplaces.</h1>
+
+        <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
+          <a href="{% url 'signup' %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100  hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Get Started 
+            <img src="https://d20uiuzezo3er4.cloudfront.net/AI-tools/ai-tool-home/diagonal+right+top+arrow.svg" class="h-3 w-3 inline-block ml-2" alt="arrow" />
+          </a>
+
+          <a href="mailto:egulrezalam@gmail.com" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">Contact</a>
+        </div>
+      </div>
+      <!-- text end -->
+    </section>
+  </div>
+</div>
+<!-- hero - end -->
+
+
+
+
+
+<!-- gallery - start -->
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl xl:mb-12">One Brand, Many Functions</h2>
+  
+      <div class="grid grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        <!-- image - start -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <a href="#">
+            <img src="https://d20uiuzezo3er4.cloudfront.net/AI-tools/ai-tool-home/360_rotation/360gif.gif?auto=format&q=75&fit=crop&w=600" 
+                 loading="lazy" 
+                 alt="Photo by Gulrez Alam" 
+                 class="w-full h-48 md:h-80 object-cover transition duration-200 hover:scale-110" />
+            <span class="absolute bottom-2 left-2 text-sm text-white md:text-lg bg-gray-800 bg-opacity-50 rounded px-2 py-1">360 Spin</span>
+          </a>
+        </div>
+        <!-- image - end -->
+  
+        <!-- video - start -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <a href="#">
+            <video 
+              src="https://d20uiuzezo3er4.cloudfront.net/AI-tools/ai-tool-home/video+compressed+home.mp4?auto=format&q=75&fit=crop&w=600" 
+              loading="lazy" 
+              alt="Video by Gulrez Alam" 
+              class="w-full h-48 md:h-80 object-cover transition duration-200 hover:scale-110"
+              muted 
+              preload="metadata" 
+              playsinline 
+              autoplay 
+              loop></video>
+            <span class="absolute bottom-2 left-2 text-sm text-white md:text-lg bg-gray-800 bg-opacity-50 rounded px-2 py-1">Video Tour</span>
+          </a>
+        </div>
+        <!-- video - end -->
+  
+        <!-- image - start -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+          <a href="#">
+            <img src="https://d20uiuzezo3er4.cloudfront.net/AI-tools/ai-tool-home/productsuitfimgbottom.webp?auto=format&q=75&fit=crop&w=600" 
+                 loading="lazy" 
+                 alt="Photo by Gulrez Alam" 
+                 class="w-full h-48 md:h-80 object-cover transition duration-200 hover:scale-110" />
+            <span class="absolute bottom-2 left-2 text-sm text-white md:text-lg bg-gray-800 bg-opacity-50 rounded px-2 py-1">Image Studio</span>
+          </a>
+        </div>
+        <!-- image - end -->
+  
+  
+      </div>
+  
+      
+    </div>
+  </div>
+  <!-- gallery - end -->
+  
+  
+
+<!-- stats - start -->
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+    <!-- text - start -->
+    <div class="mb-8 md:mb-12">
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Our Team by the numbers</h2>
+
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Our team members are not just colleagues; they are the backbone of our success. Each member brings a unique set of skills, passion, and dedication to the table, creating a dynamic and harmonious work environment. With diverse expertise in areas such as development, design, and project management, our team is a powerhouse of talent. Together, we foster a culture of collaboration, innovation, and mutual support, ensuring that everyone's contributions are valued. As a cohesive unit, our team is not only adept at tackling challenges but is also driven to achieve excellence in every project we undertake.</p>
+    </div>
+    <!-- text - end -->
+
+    <div class="grid grid-cols-2 gap-6 rounded-lg bg-indigo-500 p-6 md:grid-cols-4 md:gap-8 md:p-8">
+      <!-- stat - start -->
+      <div class="flex flex-col items-center">
+        <div class="text-xl font-bold text-white sm:text-2xl md:text-3xl">20+</div>
+        <div class="text-sm text-indigo-200 sm:text-base">People</div>
+      </div>
+      <!-- stat - end -->
+
+      <!-- stat - start -->
+      <div class="flex flex-col items-center">
+        <div class="text-xl font-bold text-white sm:text-2xl md:text-3xl">200+</div>
+        <div class="text-sm text-indigo-200 sm:text-base">Projects</div>
+      </div>
+
+      <!-- stat - start -->
+      <div class="flex flex-col items-center">
+        <div class="text-xl font-bold text-white sm:text-2xl md:text-3xl">100+</div>
+        <div class="text-sm text-indigo-200 sm:text-base">Customers</div>
+      </div>
+      <!-- stat - end -->
+
+      <!-- stat - start -->
+      <div class="flex flex-col items-center">
+        <div class="text-xl font-bold text-white sm:text-2xl md:text-3xl">A couple</div>
+        <div class="text-sm text-indigo-200 sm:text-base">Coffee breaks</div>
+      </div>
+      <!-- stat - end -->
+    </div>
+  </div>
+</div>
+<!-- stats - end -->
+
+
+
+<!-- call to action - start -->
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <div class="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
+      <!-- image - start -->
+      <div class="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&q=75&fit=crop&w=1000" loading="lazy" alt="Photo by Andras Vas" class="h-full w-full object-cover object-center" />
+      </div>
+      <!-- image - end -->
+
+      <!-- content - start -->
+      <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+        <h2 class="mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">Help center</h2>
+
+        <p class="mb-8 max-w-md text-gray-600">Welcome to our Help Center, where we are dedicated to assisting you with any queries or concerns you may have. Whether you're a new user or a seasoned one, this resource is designed to guide you through common questions and provide valuable information to enhance your experience.</p>
+
+        <div class="mt-auto">
+          <a href="mailto:egulrezalam@gmail.com" class="inline-block rounded-lg bg-white px-8 py-3 text-center text-sm font-semibold text-gray-800 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:text-base">Contact support</a>
+        </div>
+      </div>
+      <!-- content - end -->
+    </div>
+  </div>
+</div>
+<!-- call to action - end -->
+
+
+{% endblock %}

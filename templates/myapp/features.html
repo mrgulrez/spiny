@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %} Features{% endblock title %}
+
+{% block header %}
+
+<div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <header class="mb-4 flex items-center justify-between py-4 md:py-8">
+        <!-- logo - start -->
+        <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
+          {% include "logo.html" %}
+        </a>
+        <!-- logo - end -->
+  
+        <!-- nav - start -->
+         <!-- nav - start -->
+        <nav class="hidden gap-12 lg:flex">
+          <a href="/" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+          <a href="{% url 'myapp:features' %}" class="text-lg font-semibold text-indigo-500">Features</a>
+          <a href="{% url 'myapp:about' %}" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">About</a>
+        </nav>
+        <!-- nav - end -->
+  
+        <!-- buttons - start -->
+        {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="hidden rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block">Log Out</button>
+        </form>
+        
+        {% else %}
+        <a href="{% url 'login' %}" class="hidden rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base lg:inline-block">Sign in</a>
+        {% endif %}
+  
+  
+        {% include "buttonsidebar.html" %}
+        <!-- buttons - end -->
+      </header>
+    </div>
+  </div>
+  <!-- hero - end -->
+
+{% endblock header  %}
+
+
+
+
+
+
+
+{% block content %}
+<div class="container mx-auto p-6 md:p-8">
+    <!-- Header -->
+    <h2 class="text-3xl font-bold text-center mb-6">Car Management</h2>
+
+    <!-- Add New Car Button -->
+    <div class="mb-6 text-center">
+        <a href="{% url 'myapp:add_car' %}" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 transform hover:scale-105">
+            Add New Car
+        </a>
+    </div>
+
+    <h1 class="text-3xl font-bold text-indigo-600 mb-4">Your Cars</h1>
+    <form method="get" class="mb-6 text-center">
+        <input type="text" name="search" placeholder="Search your cars..." value="{{ request.GET.search }}" class="p-2 border rounded-lg w-1/2">
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Search</button>
+    </form>
+    
+    {% if cars %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for car in cars %}
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition transform hover:scale-105">
+            <!-- Car Image -->
+            {% if car.images.all %}
+                <img src="{{ car.images.first.image.url }}" alt="Car Image" class="w-full h-56 object-cover">
+            {% else %}
+                <div class="h-56 bg-gray-300 flex items-center justify-center">
+                    <span class="text-white text-lg">No Image</span>
+                </div>
+            {% endif %}
+            
+            <!-- Car Details -->
+            <div class="p-4">
+                <h5 class="text-xl font-bold text-gray-800 mb-2">{{ car.title }}</h5>
+                <p class="text-gray-600 mb-2">{{ car.description|truncatewords:15 }}</p>
+                <small class="text-gray-500 block mb-4">{{ car.car_type }} | {{ car.created_at|date:"Y-m-d" }}</small>
+                
+                <!-- View Details Button -->
+                <a href="{% url 'myapp:car_detail' pk=car.pk %}" class="text-blue-500 hover:text-blue-700 font-semibold transition duration-200">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-gray-600 text-center">You haven't added any cars yet. Click the button above to add a new car.</p>
+    {% endif %}
+</div>
+{% endblock %}
+

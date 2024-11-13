@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <!-- Text - Start -->
+    <div class="bg-white p-7 max-w-4xl mx-auto rounded-xl shadow-md">
+        <h2 class="text-3xl font-bold text-center text-indigo-600 mb-6">Exciting New Features Coming Soon!</h2>
+        <p class="text-lg text-center text-gray-600 mb-6">We are continuously working to improve your experience. Stay tuned for some amazing upcoming features.</p>
+
+        <div class="bg-indigo-50 p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-indigo-500">Explore Our Features</h3>
+            <p class="mt-4 text-gray-700">Click the button below to check out all the current and upcoming features!</p>
+            <div class="mt-6 text-center">
+                <a href="{% url 'myapp:features' %}" class="text-white bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-md font-semibold">
+                    Explore Features
+                </a>
+            </div>
+        </div>
+
+        <p class="mt-6 text-lg text-center text-gray-600">We are constantly evolving, and we can’t wait to share more features with you soon!</p>
+
+        <div class="text-center mt-8">
+            <span class="text-4xl text-yellow-500">🚀</span>
+            <p class="text-xl text-gray-600 mt-2">Get ready for a smoother, faster, and more intuitive experience!</p>
+        </div>
+    </div>
+    <!-- Text - End -->
+{% else %}
+    <div class="bg-slate-100 p-7 max-w-xl mx-auto rounded-xl shadow-md">
+        <h2 class="text-2xl font-bold text-center">Create an Account</h2>
+        <p class="mt-2 text-sm text-gray-600 text-center">Join our community and explore the world of technology.</p>
+
+        <form method="post" class="mt-5">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type='submit' class="w-full text-white bg-indigo-500 hover:bg-indigo-600 px-3 py-2 rounded-md mt-4">
+                Create Account
+            </button>
+        </form>
+
+        <div class="py-5 border-t border-gray-200 mt-5">
+            <p class="text-center text-gray-500">Already have an account? <a class="text-indigo-500 hover:text-indigo-600" href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+{% endif %}
+{% endblock content %}
