@@ -9,6 +9,9 @@ from django.db import models
 from .forms import CarForm, CarImageForm
 from django.forms import modelformset_factory
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+
 
 
 
@@ -28,16 +31,22 @@ class ContactView(BaseView):
     template_name = 'myapp/contact.html'
 
 
-class FeaturesView(BaseView):
+class FeaturesView(LoginRequiredMixin, ListView):
+    model = Car
     template_name = 'myapp/features.html'
+    context_object_name = 'cars'
 
-    def get(self, request):
-        cars = Car.objects.filter(user=request.user)
-        query = request.GET.get('search')
-        if query:
-           cars = cars.filter(models.Q(title__icontains=query) | models.Q(description__icontains=query) | models.Q(car_type__icontains=query))
+    def get_queryset(self):
+        queryset = Car.objects.filter(user=self.request.user)
         
-        return render(request, 'myapp/features.html', {'cars': cars})
+        query = self.request.GET.get('search')
+        if query:
+            queryset = queryset.filter(
+                models.Q(title__icontains=query) |
+                models.Q(description__icontains=query) |
+                models.Q(car_type__icontains=query)
+            )
+        return queryset
 
 
 

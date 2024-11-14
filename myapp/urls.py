@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from .views import (
     IndexView,
     AboutView,
@@ -25,4 +27,4 @@ urlpatterns = [
     path('cars/<int:pk>/', car_detail, name='car_detail'),  
     path('cars/<int:pk>/edit/', edit_car, name='edit_car'),  
     path('cars/<int:pk>/delete/', delete_car, name='delete_car')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
